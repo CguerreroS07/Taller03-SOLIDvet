@@ -73,6 +73,13 @@ Preguntas de discusión:
     
     La unica clase que debe cambiar seria ReporteService, ya que esta asume toda la responsabilidad sobre la lógica y salida de los reportes tras el refactoring. 
 
+## Integrante 2:
+- ¿Por qué los condicionales repetidos hacen más caro el cambio?
+    Porque la misma decision por tipa esta copiada en varios lugares. Cada cambio olbiga a encontrar y editar todo esos puntos. 
+- ¿Qué pasaría si agregamos Odontologia como tratamiento?
+    Se crea un oslo archivo nuevo, con sus cuatro reglas. No se toca ninguna clase existente.
+- ¿Cuándo una interfaz ayuda a extender el sistema?
+    Ayuda cuando hay varias variantes de un mismo comportamiento y el codigo que las usa no debe saber cual es cual.
 ## Integrante 3:
 
 Preguntas de discusión:
