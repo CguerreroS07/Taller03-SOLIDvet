@@ -72,3 +72,18 @@ Preguntas de discusión:
 
     
     La unica clase que debe cambiar seria ReporteService, ya que esta asume toda la responsabilidad sobre la lógica y salida de los reportes tras el refactoring. 
+
+## Integrante 3:
+
+Preguntas de discusión:
+- ¿Por qué lanzar UnsupportedOperationException puede ser señal de mal diseño?
+
+    Porque indica que la subclase no puede cumpolir lo que promete la clase base. El código compila pero falla al ejecutarse
+
+- ¿Qué contrato estaba prometiendo Animal?
+
+    Prometía que todo animal podía volar, caminar y nadar y dada esa promesa lanzaba excepciones.
+
+- ¿Cómo cambia el diseño cuando modelamos capacidades en lugar de herencia amplia?
+
+    Cada animal implementa únicamete los métodos que lógcamente es capaz de realizar.
