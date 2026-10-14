@@ -1,5 +1,5 @@
 package clinicaveterinaria;
-
+import clinicaveterinaria.interfaces.ITratamiento;
 import clinicaveterinaria.model.*;
 import clinicaveterinaria.repository.*;
 import clinicaveterinaria.service.*;
@@ -20,7 +20,7 @@ public class Main {
 
         Mascota mascota = new Mascota(1, "Luna", TipoAnimal.PERRO, 4, "Ana Perez");
         Veterinario veterinario = new Veterinario(1, "Dr. Ruiz", "Medicina general", true);
-        Tratamiento tratamiento = new Tratamiento(1, TipoTratamiento.CIRUGIA, "Esterilizacion", 120.0);
+        ITratamiento tratamiento = new CirugiaTratamiento(1,  "Esterilizacion", 120.0);
 
         mascotaService.crearMascota(mascota);
         veterinarioCrudService.crearVeterinario(veterinario);
@@ -46,7 +46,7 @@ public class Main {
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
-    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento) {
+    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, ITratamiento tratamiento) {
         Cita citaDesdeModelo = veterinario.reservarCita(2, mascota, LocalDate.now().plusDays(1));
         veterinario.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
         System.out.println(veterinario.crearReporte(citaDesdeModelo));
@@ -54,6 +54,6 @@ public class Main {
         Animal pez = new Pez(3, "Nemo");
         pez.nadar();
         System.out.println("El pez heredó caminar() y volar(), aunque no debe usarlos.");
-        System.out.println("Tratamiento OCP violado pero funcional: " + tratamiento.obtenerIndicaciones());
+        System.out.println("Tratamiento OCP aplicado, polimorfismo " + tratamiento.obtenerIndicaciones());
     }
 }

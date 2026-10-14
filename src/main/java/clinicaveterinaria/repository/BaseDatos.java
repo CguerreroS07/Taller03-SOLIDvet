@@ -4,9 +4,8 @@ import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
-import clinicaveterinaria.model.Tratamiento;
 import clinicaveterinaria.model.Veterinario;
-
+import clinicaveterinaria.interfaces.ITratamiento;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +17,7 @@ public class BaseDatos implements IBaseDatos {
     private final List<Mascota> mascotas = new ArrayList<>();
     private final List<Veterinario> veterinarios = new ArrayList<>();
     private final List<Cita> citas = new ArrayList<>();
-    private final List<Tratamiento> tratamientos = new ArrayList<>();
+    private final List<ITratamiento> tratamientos = new ArrayList<>();
     private final List<Factura> facturas = new ArrayList<>();
     private final Map<String, Integer> auditoria = new HashMap<>();
 
@@ -38,7 +37,7 @@ public class BaseDatos implements IBaseDatos {
     }
 
     @Override
-    public List<Tratamiento> getTratamientos() {
+    public List<ITratamiento> getTratamientos() {
         return tratamientos;
     }
 
