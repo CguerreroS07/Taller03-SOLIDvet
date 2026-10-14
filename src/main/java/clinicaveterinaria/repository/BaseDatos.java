@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class BaseDatos implements IBaseDatos {
     private final List<Mascota> mascotas = new ArrayList<>();
     private final List<Veterinario> veterinarios = new ArrayList<>();
@@ -52,19 +51,5 @@ public class BaseDatos implements IBaseDatos {
 
     public Map<String, Integer> getAuditoria() {
         return auditoria;
-    }
-
-    public double calcularIngresosMensual() {
-        double total = 0;
-        int mesActual = LocalDate.now().getMonthValue();
-        int anioActual = LocalDate.now().getYear();
-        for (Factura factura : facturas) {
-            if (factura.isPagada()
-                    && factura.getFecha().getMonthValue() == mesActual
-                    && factura.getFecha().getYear() == anioActual) {
-                total += factura.getMonto();
-            }
-        }
-        return total;
     }
 }

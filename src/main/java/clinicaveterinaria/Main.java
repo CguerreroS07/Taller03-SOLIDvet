@@ -4,8 +4,8 @@ import clinicaveterinaria.model.*;
 import clinicaveterinaria.repository.*;
 import clinicaveterinaria.service.*;
 
-
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,7 +41,8 @@ public class Main {
         System.out.println("Mascotas de Ana Perez: " + reporteService.generarReporteMascotasPorDueno("Ana Perez").size());
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
-        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
+        CorreccionSrpYViolacionesRestantes(veterinario, mascota, tratamiento, reservaService, diagnosticoService, reporteService);
+        
         new Clinica().agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
@@ -51,7 +52,7 @@ public class Main {
         veterinario.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
         System.out.println(veterinario.crearReporte(citaDesdeModelo));
 
-        Animal pez = new Pez(3, "Nemo");
+        Pez pez = new Pez(3, "Nemo");
         pez.nadar();
         System.out.println("El pez heredó caminar() y volar(), aunque no debe usarlos.");
         System.out.println("Tratamiento OCP aplicado, polimorfismo " + tratamiento.obtenerIndicaciones());
