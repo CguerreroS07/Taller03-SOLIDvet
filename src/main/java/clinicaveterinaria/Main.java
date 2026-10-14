@@ -47,14 +47,14 @@ public class Main {
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
-    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, ITratamiento tratamiento) {
-        Cita citaDesdeModelo = veterinario.reservarCita(2, mascota, LocalDate.now().plusDays(1));
-        veterinario.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
-        System.out.println(veterinario.crearReporte(citaDesdeModelo));
+    
+    private static void CorreccionSrpYViolacionesRestantes(Veterinario veterinario, Mascota mascota, ITratamiento tratamiento, ReservaService reservaService, DiagnosticoService diagnosticoService, ReporteService reporteService) {
+        Cita nuevaCita = reservaService.reservarCita(2, mascota, veterinario, LocalDate.now().plusDays(1));
+        diagnosticoService.diagnosticar(nuevaCita, "Ejemplo de SRP corregido");
+        System.out.println(reporteService.crearReporte(nuevaCita));
 
         Pez pez = new Pez(3, "Nemo");
         pez.nadar();
-        System.out.println("El pez heredó caminar() y volar(), aunque no debe usarlos.");
-        System.out.println("Tratamiento OCP aplicado, polimorfismo " + tratamiento.obtenerIndicaciones());
-    }
+        System.out.println("El pez solo puede nadar");
+}
 }
