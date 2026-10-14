@@ -79,7 +79,7 @@ Preguntas de discusión:
 - ¿Qué pasaría si agregamos Odontologia como tratamiento?
     Se crea un oslo archivo nuevo, con sus cuatro reglas. No se toca ninguna clase existente.
 - ¿Cuándo una interfaz ayuda a extender el sistema?
-    Ayuda cuando hay varias variantes de un mismo comportamiento y el codigo que las usa no debe saber cual es cual.
+    Ayuda cuando hay varias variantes de un mismo comportamiento y el codigo que las usa no debe saber cual es cual
 ## Integrante 3:
 
 Preguntas de discusión:
